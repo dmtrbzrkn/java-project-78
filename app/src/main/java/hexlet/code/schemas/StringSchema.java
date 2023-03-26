@@ -2,8 +2,8 @@ package hexlet.code.schemas;
 
 public class StringSchema extends BaseSchema {
     public StringSchema contains(String substring) {
-        addRequirements(string -> string == null
-                || string instanceof String
+        addRequirements(string -> (string == null)
+                || (string instanceof String)
                 && ((String) string).contains(substring));
         return this;
     }
