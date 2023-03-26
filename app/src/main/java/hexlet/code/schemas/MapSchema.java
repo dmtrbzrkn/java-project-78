@@ -8,6 +8,17 @@ public class MapSchema extends BaseSchema {
         return this;
     }
 
+    public MapSchema shape(Map<String, BaseSchema> schemas) {
+        addRequirements(map -> map == null
+                || map instanceof Map
+                && schemas.entrySet().stream()
+                .allMatch(schema -> schema.getValue()
+                        .isValid(((Map<?, ?>) map)
+                                .get(schema.getKey()))));
+
+        return this;
+    }
+
     public MapSchema sizeof(int size) {
         addRequirements(map -> map == null
                 || map instanceof Map
