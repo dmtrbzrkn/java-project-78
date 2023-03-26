@@ -15,7 +15,7 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 
-    public StringSchema required () {
+    public StringSchema required() {
         this.addRequirements(string -> string instanceof String
                 && !((String) string).isBlank());
         return this;
