@@ -21,7 +21,8 @@ public final class StringSchema extends BaseSchema {
     }
 
     public StringSchema required() {
-        this.addRequirements(REQUIRED, (string -> string instanceof String
+        setRequired(true);
+        this.addRequirements(STRING_REQUIRED, (string -> string instanceof String
                 && !((String) string).isBlank()));
         return this;
     }

@@ -6,7 +6,9 @@ import java.util.function.Predicate;
 
 
 public abstract class BaseSchema {
-    public static final String REQUIRED = "required";
+    public static final String STRING_REQUIRED = "str_required";
+    public static final String NUM_REQUIRED = "num_required";
+    public static final String MAP_REQUIRED = "map_required";
     public static final String SHAPE = "shape";
     public static final String SIZE_OF = "sizeOf";
     public static final String POSITIVE = "positive";
@@ -21,18 +23,20 @@ public abstract class BaseSchema {
     }
 
     public final boolean isValid(Object object) {
-        if (!isRequired && isValidType(object)) {
+        if (!isRequired && !isValidType(object)) {
             return true;
-        } else if (isRequired && isValidType(object)) {
+        } else if (isRequired && !isValidType(object)) {
             return false;
-        }
-        for (Map.Entry<String, Predicate<Object>> entry : requirements.entrySet()) {
-            if (!entry.getValue().test(object)) {
-                return false;
+        } else {
+            for (Map.Entry<String, Predicate<Object>> entry : requirements.entrySet()) {
+                if (!entry.getValue().test(object)) {
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
     }
+
     abstract boolean isValidType(Object object);
 
     protected final void addRequirements(String typeOfValidation, Predicate<Object> predicate) {

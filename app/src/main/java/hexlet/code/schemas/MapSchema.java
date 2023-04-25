@@ -9,7 +9,8 @@ public final class MapSchema extends BaseSchema {
     }
 
     public MapSchema required() {
-        addRequirements(REQUIRED, (map -> map instanceof Map));
+        setRequired(true);
+        addRequirements(MAP_REQUIRED, (map -> map instanceof Map));
         return this;
     }
 

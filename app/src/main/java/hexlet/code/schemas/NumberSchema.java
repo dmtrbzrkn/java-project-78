@@ -22,7 +22,8 @@ public final class NumberSchema extends BaseSchema {
     }
 
     public NumberSchema required() {
-        addRequirements(REQUIRED, (number -> number instanceof Integer));
+        setRequired(true);
+        addRequirements(NUM_REQUIRED, (number -> number instanceof Integer));
         return this;
     }
 }
