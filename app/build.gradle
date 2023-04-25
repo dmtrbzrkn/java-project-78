@@ -11,9 +11,8 @@ plugins {
     id 'com.adarshr.test-logger' version '3.2.0'
     id 'se.patrikerdes.use-latest-versions' version '0.2.18'
     id 'com.github.ben-manes.versions' version '0.46.0'
-    id 'io.freefair.lombok' version '8.0.1'
     id 'jacoco'
-    id 'net.ltgt.errorprone' version '3.0.1'
+    id 'net.ltgt.errorprone' version '3.1.0'
 }
 
 group = 'hexlet.code'
@@ -30,9 +29,9 @@ compileJava {
 
 dependencies {
     implementation(
-            'info.picocli:picocli:4.7.1',
-            'com.fasterxml.jackson.core:jackson-databind:2.15.0-rc1',
-            'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.0-rc1'
+            'info.picocli:picocli:4.7.3',
+            'com.fasterxml.jackson.core:jackson-databind:2.15.0',
+            'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.0'
     )
     implementation 'org.apache.commons:commons-lang3:3.12.0'
 

@@ -1,23 +1,28 @@
 package hexlet.code.schemas;
 
 public final class NumberSchema extends BaseSchema {
+    @Override
+    public boolean isValidType(Object object) {
+        return object instanceof Integer;
+    }
+
     public NumberSchema positive() {
-        addRequirements(number -> number == null
+        addRequirements(POSITIVE, (number -> number == null
                 || number instanceof Integer
-                && (Integer) number > 0);
+                && (Integer) number > 0));
         return this;
     }
 
     public NumberSchema range(int start, int end) {
-        addRequirements(number -> number == null
+        addRequirements(RANGE, (number -> number == null
                 || number instanceof Integer
                 && (Integer) number >= start
-                && (Integer) number <= end);
+                && (Integer) number <= end));
         return this;
     }
 
     public NumberSchema required() {
-        addRequirements(number -> number instanceof Integer);
+        addRequirements(REQUIRED, (number -> number instanceof Integer));
         return this;
     }
 }
